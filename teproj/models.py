@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class News(models.Model):
@@ -15,6 +16,9 @@ class News(models.Model):
 
     def my_fanc(self):
         return "Hello from model"
+    
+    def get_absolute_url(self):
+        return reverse('view_news', kwargs={'news_id': self.pk})
 
     class Meta:
         verbose_name = 'Новость'
@@ -26,6 +30,9 @@ class Category(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('category', kwargs={'category_id': self.pk})
 
     class Meta:
         verbose_name = 'Категория'
