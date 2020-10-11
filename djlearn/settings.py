@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
+    'ckeditor_uploader',
+    'ckeditor',
     'teproj.apps.TeprojConfig',
 ]
 
@@ -48,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'djlearn.urls'
@@ -70,6 +74,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'djlearn.wsgi.application'
 
+CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
@@ -127,4 +133,8 @@ STATICFILES_DIRS = [
 #Место для сохранения файлов
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+INTERNAL_IPS = [
+    '127.0.0.1'
+]
 
